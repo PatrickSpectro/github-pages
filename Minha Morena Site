@@ -1,0 +1,102 @@
+import Image from "next/image"
+import { Heart, Clock, Star } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-pink-100 text-gray-800 relative overflow-hidden">
+      {/* Corações de fundo */}
+      {[...Array(50)].map((_, i) => (
+        <Heart
+          key={i}
+          className="absolute animate-float text-pink-300"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            fontSize: `${Math.random() * 30 + 10}px`,
+            opacity: Math.random() * 0.5 + 0.1,
+            color: ["#FF69B4", "#FF1493", "#C71585", "#DB7093", "#FFC0CB"][Math.floor(Math.random() * 5)],
+          }}
+        />
+      ))}
+
+      {/* Conteúdo do site */}
+      <div className="relative z-10">
+        <header className="bg-pink-200 bg-opacity-80 p-4 text-center">
+          <h1 className="text-3xl font-bold text-pink-700">Minha Morena</h1>
+        </header>
+
+        <main className="container mx-auto px-4 py-8">
+          <section className="mb-12 text-center">
+            <h2 className="mb-4 text-2xl font-semibold">Bem-vinda, meu amor! 💖</h2>
+            <p className="mb-4">
+              Este cantinho é só para você, feito com todo o carinho. Aqui, cada palavra é um pedacinho do meu coração,
+              e cada detalhe é um lembrete do quanto você é especial. 💕
+            </p>
+            <Heart className="mx-auto text-red-500" size={48} />
+          </section>
+
+          <section className="mb-12">
+            <h2 className="mb-4 text-2xl font-semibold text-center">Nossas Memórias</h2>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <Card key={i} className="bg-white bg-opacity-80">
+                  <CardContent className="p-4">
+                    <Image
+                      src={`/placeholder.svg?height=200&width=300`}
+                      alt={`Memória ${i}`}
+                      width={300}
+                      height={200}
+                      className="rounded-lg object-cover"
+                    />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section className="mb-12 text-center">
+            <h2 className="mb-4 text-2xl font-semibold">Tempo Juntos</h2>
+            <div className="flex items-center justify-center">
+              <Clock className="mr-2 text-pink-500" />
+              <span className="text-xl font-bold">462 dias de amor</span>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="mb-4 text-2xl font-semibold text-center">Momentos Especiais</h2>
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card className="bg-white bg-opacity-80">
+                <CardContent className="p-4">
+                  <h3 className="mb-2 text-lg font-semibold">Nosso Primeiro Encontro</h3>
+                  <p>Em frente a escola, acabamos nos conhecendo, sem nem fazer ideia de que seríamos tão importante um para o outro.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white bg-opacity-80">
+                <CardContent className="p-4">
+                  <h3 className="mb-2 text-lg font-semibold">Primeiro Presente</h3>
+                  <p>Quando suas aulas voltaram e eu te chamei na porta da escola para entre 5 sonhos de valsa e 5 ouro branco.
+Foi a primeira vez que ganhei seu beijo e seu abraço também.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+
+          <section className="text-center">
+            <Button className="bg-pink-500 hover:bg-pink-600">
+              <Star className="mr-2" />
+              Você é Minha Estrela
+            </Button>
+          </section>
+        </main>
+
+        <footer className="bg-pink-200 bg-opacity-80 p-4 text-center">
+          <p>Sou o meu melhor pra melhor pessoa do mundooo</p>
+        </footer>
+      </div>
+    </div>
+  )
+}
+
